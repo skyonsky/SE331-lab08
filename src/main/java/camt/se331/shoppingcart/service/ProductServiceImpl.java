@@ -6,12 +6,15 @@ import camt.se331.shoppingcart.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by Dto on 2/8/2015.
  */
+@CrossOrigin
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -59,5 +62,19 @@ public class ProductServiceImpl implements ProductService {
         productDao.updateProduct(product);
         return product;
 
+    }
+
+    @Override
+    @Transactional
+    public Product removeImage(Product product, Long id) {
+        Iterator<Image> imgitr = product.getImages().iterator();
+        while (imgitr.hasNext()){
+            Image img = imgitr.next();
+            if (img.getId().intValue() == id.intValue()){
+                product.getImages().remove(img);
+            }
+        }
+        productDao.updateProduct(product);
+        return product;
     }
 }

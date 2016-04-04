@@ -36,8 +36,8 @@ public class ImageUtil {
             BufferedImage readBufferedImage  = ImageIO.read(file);
             BufferedImage outputImage = Scalr.resize(readBufferedImage,
                                                 Scalr.Mode.AUTOMATIC,
-                                                200,
-                                                200 );
+                                                400,
+                                                300 );
 
             image.setFileName(file.getName());
             image.setContentType(Files.probeContentType(file.toPath()));

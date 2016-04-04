@@ -67,11 +67,35 @@ productMainController.controller('editProductController', ['$scope', '$http', '$
             $scope.product = data;
         });
 
-        $scope.editProduct = function () {
+        $scope.editProduct = function (flowFiles) {
             //$http.put("/product", $scope.product).then(function () {
-            productService.update({id: $scope.product.id}, $scope.product, function () {
+            productService.update({
+                id: $scope.product.id,
+                name:$scope.product.name,
+                description:$scope.product.description,
+                totalPrice:$scope.product.totalPrice
+            }, function (data) {
+                var productid = data.id;
+                flowFiles.opts.target = 'http://localhost:8080/productImage/add';
+                flowFiles.opts.testChunks = false;
+                flowFiles.opts.query = {productid: productid};
+                flowFiles.upload();
                 $rootScope.editSuccess = true;
                 $location.path("listProduct");
             });
         }
+
+        $scope.removeImage = function (pId, imgId){
+            var ans = confirm("Do you want to delete the image?");
+            if(ans == true){
+                $http.delete("http://localhost:8080/productImage/remove?productid="+pId+"&imageid="+imgId).then(function (){
+                    $http.get("http://localhost:8080/product/"+pId).success(function (data){
+                        $scope.product = data;
+                    });
+                }, function(){
+                    console.log("FAILED")
+                });
+            }
+        }
+
     }]);

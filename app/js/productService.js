@@ -2,9 +2,14 @@
 var productService = angular.module('productServices',['ngResource']);
 
 productService.factory('productService',function($resource){
-    return $resource('http://localhost:8080/product/:id', { id: '@_id' }, {
+    return $resource('http://localhost:8080/product/:id', { id: '@id' }, {
         update: {
-            method: 'PUT' // this method issues a PUT request
+            method: 'PUT', // this method issues a PUT request
+            params: {
+                name:'@name',
+                description:'@description',
+                totalPrice:'@totalPrice'
+            }
         }});
 
 })

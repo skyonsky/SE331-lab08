@@ -51,7 +51,18 @@
                         </tr>
                     </table>
 
+                    <div ng-show="editPerson" class="row">
+                        <div style="position: relative" ng-repeat="image in product.images" class="text-center">
+                        <img ng-src="data:{{image.contentType}};base64,{{image.content}}" class="thumbnail"/>
+                        <button style="position: absolute; top: 5px; left: 5px; z-index: 999" href="#" ng-click="removeImage(product.id, image.id)">
+                            <i class="glyphicon glyphicon-remove-sign"></i>
+                        </button>
+                    </div>
+                    </div>
+
+
                 </div>
+
 
                 <div class="alert alert-danger" role="alert" ng-show="editform.productprice.$error.number">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -62,7 +73,7 @@
             </div>
 
             <button type="submit" class="btn btn-default" ng-click="addProduct($flow)" ng-show="addPerson">Add</button>
-            <button type="submit" class="btn btn-default" ng-click="editProduct()" ng-show="editPerson">Edit</button>
+            <button type="submit" class="btn btn-default" ng-click="editProduct($flow)" ng-show="editPerson">Edit</button>
         </form>
     </div>
 </div>
