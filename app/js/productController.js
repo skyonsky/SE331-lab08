@@ -69,31 +69,33 @@ productMainController.controller('editProductController', ['$scope', '$http', '$
 
         $scope.editProduct = function (flowFiles) {
             //$http.put("/product", $scope.product).then(function () {
+            var pd = angular.copy($scope.product);
+            //pd.images = [];
             productService.update({
-                id: $scope.product.id,
+                id:$scope.product.id,
                 name:$scope.product.name,
                 description:$scope.product.description,
                 totalPrice:$scope.product.totalPrice
-            }, function (data) {
+            },function(data){
                 var productid = data.id;
                 flowFiles.opts.target = 'http://localhost:8080/productImage/add';
                 flowFiles.opts.testChunks = false;
-                flowFiles.opts.query = {productid: productid};
+                flowFiles.opts.query = {productid:productid};
                 flowFiles.upload();
                 $rootScope.editSuccess = true;
                 $location.path("listProduct");
             });
         }
 
-        $scope.removeImage = function (pId, imgId){
-            var ans = confirm("Do you want to delete the image?");
-            if(ans == true){
-                $http.delete("http://localhost:8080/productImage/remove?productid="+pId+"&imageid="+imgId).then(function (){
-                    $http.get("http://localhost:8080/product/"+pId).success(function (data){
+        $scope.removeImage = function(pdId, imgId) {
+            var r = confirm("Remove ?");
+            if (r == true) {
+                $http.delete("http://localhost:8080/productImage/remove?productid="+pdId+"&imageid="+imgId).then(function () {
+                    $http.get("http://localhost:8080/product/" + pdId).success(function (data) {
                         $scope.product = data;
                     });
                 }, function(){
-                    console.log("FAILED")
+                    console.log("FAILED");
                 });
             }
         }
