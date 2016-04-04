@@ -20,7 +20,7 @@
     <script src="app.js"></script>
     <script src="js/productController.js"></script>
     <script src="js/productService.js"></script>
-
+    <script src="bower_components/ng-flow/dist/ng-flow-standalone.js"></script>
 
 
     <!-- add i18n script -->
@@ -41,12 +41,12 @@
 </div>
 <div class="navbar navbar-default" ng-controller="languageController">
     <div class="container-fluid">
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li ng-class="{'active':currentLocale== 'en'}"><a href="" ng-click="changeLanguage('en')">EN </a></li>
-                    <li ng-class="{'active':currentLocale== 'fr'}"><a href="" ng-click="changeLanguage('fr')">FR</a></li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{'active':currentLocale== 'en'}"><a href="" ng-click="changeLanguage('en')">EN </a></li>
+                <li ng-class="{'active':currentLocale== 'fr'}"><a href="" ng-click="changeLanguage('fr')">FR</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 

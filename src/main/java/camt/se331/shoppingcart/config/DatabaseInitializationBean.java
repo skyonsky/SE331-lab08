@@ -6,16 +6,19 @@ import camt.se331.shoppingcart.entity.SelectedProduct;
 import camt.se331.shoppingcart.entity.ShoppingCart;
 import camt.se331.shoppingcart.repository.ProductRepository;
 import camt.se331.shoppingcart.repository.ShoppingCartRepository;
+import camt.se331.shoppingcart.service.ImageUtil;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.*;
 
 /**
  * Created by Dto on 2/11/2015.
  */
+@CrossOrigin
 @Component
 @Profile("db.init")
 public class DatabaseInitializationBean implements InitializingBean {
@@ -27,7 +30,7 @@ public class DatabaseInitializationBean implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         Product[] initProduct =  {
                 new Product(1l,"Kindle","the good book reader",6900.00),
-                new Product(2l,"Surface Pro","The unknow computer",34000.00),
+                new Product(2l,"Surface Pro","The unknow computer",34000.00,ImageUtil.getImage("pic/LINE2.png")),
                 new Product(3l,"Mac pro"," Mac book interim",44000.00),
                 new Product(4l,"Candle","use for lightenup the world",10.00),
                 new Product(5l,"Bin","User for what ?",200.00),

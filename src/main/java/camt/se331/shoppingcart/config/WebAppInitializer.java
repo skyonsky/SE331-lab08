@@ -9,6 +9,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.ResourcePropertySource;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -17,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 import java.io.IOException;
 
+@CrossOrigin
 public class WebAppInitializer implements WebApplicationInitializer {
 
 
