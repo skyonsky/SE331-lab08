@@ -29,20 +29,20 @@ public class DatabaseInitializationBean implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Product[] initProduct =  {
-                new Product(1l,"Kindle","the good book reader",6900.00),
-                new Product(2l,"Surface Pro","The unknow computer",34000.00,ImageUtil.getImage("pic/LINE2.png")),
-                new Product(3l,"Mac pro"," Mac book interim",44000.00),
-                new Product(4l,"Candle","use for lightenup the world",10.00),
-                new Product(5l,"Bin","User for what ?",200.00),
-                new Product(6l,"Telephone", "Call the others",150.00),
-                new Product(7l,"iPhone","What is it?",26000.00),
-                new Product(8l,"Galaxy Note 4","Who still use this ?",24000.00),
-                new Product(9l,"AngularJS","we hate it",2000.00),
-                new Product(10l,"Mazda 3","Very handsome guy use this",300000.00)
+                new Product(1l,"Kindle","the good book reader",6900.00,ImageUtil.getImage("pic/kindle.jpg")),
+                new Product(2l,"Surface Pro","The unknow computer",34000.00,ImageUtil.getImage("pic/Surface.png")),
+                new Product(3l,"Mac pro"," Mac book interim",44000.00,ImageUtil.getImage("pic/Macpro.jpg")),
+                new Product(4l,"Candle","use for lightenup the world",10.00,ImageUtil.getImage("pic/candle.jpg")),
+                new Product(5l,"Bin","User for what ?",200.00,ImageUtil.getImage("pic/bin.jpg")),
+                new Product(6l,"Telephone", "Call the others",150.00,ImageUtil.getImage("pic/telephone.jpg")),
+                new Product(7l,"iPhone","What is it?",26000.00,ImageUtil.getImage("pic/iphone.jpg")),
+                new Product(8l,"Galaxy Note 4","Who still use this ?",24000.00,ImageUtil.getImage("pic/note.jpg")),
+                new Product(9l,"AngularJS","we hate it",2000.00,ImageUtil.getImage("pic/AngularJS.png")),
+                new Product(10l,"Mazda 3","Very handsome guy use this",300000.00,ImageUtil.getImage("pic/mazda.jpg"))
         };
 
         productRepository.save(Arrays.asList(initProduct));
-        productRepository.save(new Product(1l,"Kindle","the good book reader",6900.00));
+        productRepository.save(new Product(1l,"Kindle","the good book reader",6900.00,ImageUtil.getImage("pic/kindle.jpg")));
 
         ShoppingCart shoppingCart = new ShoppingCart();
         List<SelectedProduct> selectedProducts = new ArrayList<>();
